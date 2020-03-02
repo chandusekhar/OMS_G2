@@ -40,8 +40,8 @@
             this.gridControlOrders = new DevExpress.XtraGrid.GridControl();
             this.gridViewOrders = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnErrors = new DevExpress.XtraEditors.SimpleButton();
+            this.btnImport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlImport)).BeginInit();
             this.groupControlImport.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -199,37 +199,37 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.simpleButton2);
-            this.panelControl2.Controls.Add(this.simpleButton1);
+            this.panelControl2.Controls.Add(this.btnErrors);
+            this.panelControl2.Controls.Add(this.btnImport);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 417);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(974, 36);
             this.panelControl2.TabIndex = 2;
             // 
-            // simpleButton1
+            // btnErrors
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(887, 5);
-            this.simpleButton1.MinimumSize = new System.Drawing.Size(0, 25);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(80, 25);
-            this.simpleButton1.TabIndex = 23;
-            this.simpleButton1.Text = "Import";
+            this.btnErrors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnErrors.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnErrors.Appearance.Options.UseFont = true;
+            this.btnErrors.Location = new System.Drawing.Point(801, 5);
+            this.btnErrors.MinimumSize = new System.Drawing.Size(0, 25);
+            this.btnErrors.Name = "btnErrors";
+            this.btnErrors.Size = new System.Drawing.Size(80, 25);
+            this.btnErrors.TabIndex = 24;
+            this.btnErrors.Text = "Errors";
             // 
-            // simpleButton2
+            // btnImport
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(801, 5);
-            this.simpleButton2.MinimumSize = new System.Drawing.Size(0, 25);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(80, 25);
-            this.simpleButton2.TabIndex = 24;
-            this.simpleButton2.Text = "Errors";
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.Appearance.Options.UseFont = true;
+            this.btnImport.Location = new System.Drawing.Point(887, 5);
+            this.btnImport.MinimumSize = new System.Drawing.Size(0, 25);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(80, 25);
+            this.btnImport.TabIndex = 23;
+            this.btnImport.Text = "Import";
             // 
             // ImportOrders
             // 
@@ -274,7 +274,7 @@
         private DevExpress.XtraGrid.GridControl gridControlOrders;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewOrders;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnErrors;
+        private DevExpress.XtraEditors.SimpleButton btnImport;
     }
 }

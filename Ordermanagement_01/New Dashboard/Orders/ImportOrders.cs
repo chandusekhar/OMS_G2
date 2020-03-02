@@ -20,43 +20,12 @@ namespace Ordermanagement_01.New_Dashboard.Orders
     public partial class ImportOrders : XtraForm
     {
         private DataTable dtProcessSettings;
-
         private int projectTypeId;
-        private IDictionary<int, List<string>> xlColumns;
-        private List<string> commonColumns;
-        private List<string> titleColumns;
-        private List<string> codeTaxColumns;
-        private List<string> leretaColumns;
 
-        public List<string> CommonColumns { get; set; }
+        public List<string> ColumnsToExport { get; set; }
         public ImportOrders()
         {
             InitializeComponent();
-            commonColumns = new List<string>
-            {
-                "Client","Sub Client","Project Type","Product Type","Batch"
-            };
-            titleColumns = new List<string>
-            {
-                "Order Number","Address","State","County","Client Order Reference","City","Zip",
-                "Borrower First Name","Borrower Last Name","Notes","APN","Expedite"
-            };
-            codeTaxColumns = new List<string>
-            {
-                "Order Number","Address","State","County",
-                "Borrower First Name","Borrower Last Name","City","Zip"
-                ,"Parcel Number","Loan Number","Notes","Requirement Type","Expedite"
-            };
-            leretaColumns = new List<string>
-            {
-                "Order Number","Batch Suffix","Ageing","Assigned Date","Agency",
-                "Agency Phone","Agency Name","Tax Id","Lender","Borrower Name","Address",
-                "State","County","City","Zip","Expedite"
-            };
-            xlColumns = new Dictionary<int, List<string>>()
-            {
-                {1,titleColumns }, {2,codeTaxColumns }, {3,leretaColumns }
-            };
         }
         private async void ImportOrders_Load(object sender, EventArgs e)
         {
@@ -223,15 +192,15 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             }
             try
             {
-                CommonColumns = null;
-                CommonColumns = new List<string>();
+                ColumnsToExport = null;
+                ColumnsToExport = new List<string>();
                 XLWorkbook xlWorkBook = new XLWorkbook();
                 var xlWorkSheet = xlWorkBook.Worksheets.Add("Template");
-                CommonColumns.AddRange(commonColumns);
-                CommonColumns.AddRange(xlColumns[1]);
-                for (int i = 0; i < CommonColumns.Count; i++)
+                ColumnsToExport.AddRange(GetCommonColumns());
+                ColumnsToExport.AddRange(GetTitleColumns());
+                for (int i = 0; i < ColumnsToExport.Count; i++)
                 {
-                    xlWorkSheet.Cell(1, i + 1).Value = CommonColumns[i];
+                    xlWorkSheet.Cell(1, i + 1).Value = ColumnsToExport[i];
                 }
                 string fileName = @"C:\OMS\Temp\Template.xlsx";
                 xlWorkBook.SaveAs(fileName);
@@ -242,5 +211,22 @@ namespace Ordermanagement_01.New_Dashboard.Orders
                 XtraMessageBox.Show("Something went wrong" + ex.Message);
             }
         }
+        private IReadOnlyList<string> GetCommonColumns() => new List<string> {
+         "Client","Sub Client","Project Type","Product Type","Batch"
+        };
+        private IReadOnlyList<string> GetTitleColumns() => new List<string> {
+         "Order Number","Address","State","County","Client Order Reference","City","Zip",
+         "Borrower First Name","Borrower Last Name","Notes","APN","Expedite"
+        };
+        private IReadOnlyList<string> GetCodeTaxColumns() => new List<string> {
+         "Order Number","Address","State","County",
+         "Borrower First Name","Borrower Last Name","City","Zip",
+         "Parcel Number","Loan Number","Notes","Requirement Type","Expedite"
+        };
+        private IReadOnlyList<string> GetLeretaColumns() => new List<string> {
+         "Order Number","Batch Suffix","Ageing","Assigned Date","Agency",
+         "Agency Phone","Agency Name","Tax Id","Lender","Borrower Name","Address",
+         "State","County","City","Zip","Expedite"
+        };
     }
 }
