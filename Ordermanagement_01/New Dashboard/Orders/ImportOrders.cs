@@ -192,41 +192,35 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             }
             try
             {
-                ColumnsToExport = null;
-                ColumnsToExport = new List<string>();
-                XLWorkbook xlWorkBook = new XLWorkbook();
-                var xlWorkSheet = xlWorkBook.Worksheets.Add("Template");
-                ColumnsToExport.AddRange(GetCommonColumns());
-                ColumnsToExport.AddRange(GetTitleColumns());
-                for (int i = 0; i < ColumnsToExport.Count; i++)
+                using (var httpClient = new HttpClient())
                 {
-                    xlWorkSheet.Cell(1, i + 1).Value = ColumnsToExport[i];
+                    var response = httpClient.GetAsync($"{Base_Url.Url }/Master/columns/{labelControlProjectType.Text}").Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var list = JsonConvert.DeserializeObject<List<object>>(response.Content.ReadAsStringAsync().Result);
+                            if (list != null && list.Count > 0)
+                            {
+                                XLWorkbook xlWorkBook = new XLWorkbook();
+                                var ws = xlWorkBook.Worksheets.Add(labelControlProjectType.Text);
+                                for (int i = 0; i < list.Count; i++) ws.Cell(1, i + 1).Value = list[i];
+                                string fileName = @"C:\OMS\Temp\Template.xlsx";
+                                xlWorkBook.SaveAs(fileName);
+                                Process.Start(fileName);
+                            }
+                            else
+                            {
+                                XtraMessageBox.Show("Template not found");
+                            }
+                        }
+                    }
                 }
-                string fileName = @"C:\OMS\Temp\Template.xlsx";
-                xlWorkBook.SaveAs(fileName);
-                Process.Start(fileName);
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Something went wrong" + ex.Message);
+                XtraMessageBox.Show("Something went wrong " + ex.Message);
             }
         }
-        private IReadOnlyList<string> GetCommonColumns() => new List<string> {
-         "Client","Sub Client","Project Type","Product Type","Batch"
-        };
-        private IReadOnlyList<string> GetTitleColumns() => new List<string> {
-         "Order Number","Address","State","County","Client Order Reference","City","Zip",
-         "Borrower First Name","Borrower Last Name","Notes","APN","Expedite"
-        };
-        private IReadOnlyList<string> GetCodeTaxColumns() => new List<string> {
-         "Order Number","Address","State","County",
-         "Borrower First Name","Borrower Last Name","City","Zip",
-         "Parcel Number","Loan Number","Notes","Requirement Type","Expedite"
-        };
-        private IReadOnlyList<string> GetLeretaColumns() => new List<string> {
-         "Order Number","Batch Suffix","Ageing","Assigned Date","Agency",
-         "Agency Phone","Agency Name","Tax Id","Lender","Borrower Name","Address",
-         "State","County","City","Zip","Expedite"
-        };
     }
 }
