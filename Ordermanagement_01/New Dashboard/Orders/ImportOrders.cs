@@ -174,7 +174,7 @@ namespace Ordermanagement_01.New_Dashboard.Orders
                 }
             }
         }
-        private void buttonExportTemplate_Click(object sender, EventArgs e)
+        private async void buttonExportTemplate_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(lookUpEditClient.EditValue) < 1)
             {
@@ -190,9 +190,14 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             }
             try
             {
+                var dictionary = new Dictionary<string, object>
+                {
+                    {"@Type", labelControlProjectType.Text }
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = httpClient.GetAsync($"{Base_Url.Url }/Master/columns/{labelControlProjectType.Text}").Result;
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Master/columns", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)

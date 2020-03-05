@@ -1,11 +1,11 @@
 ﻿using DevExpress.XtraEditors;
-using System.Windows.Forms;
-using System.Data;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using DevExpress.XtraLayout.Utils;
 using DevExpress.XtraLayout;
+using DevExpress.XtraLayout.Utils;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Ordermanagement_01.New_Dashboard.Orders
 {
@@ -33,12 +33,10 @@ namespace Ordermanagement_01.New_Dashboard.Orders
                 { layoutControlGroupTaxCode,4 }
             };
         }
-
         private void OrderEntry_Resize(object sender, EventArgs e)
         {
             // layoutControlGroupAdditional.Expanded = WindowState == FormWindowState.Maximized ? true : false;
         }
-
         private void OrderEntry_Load(object sender, EventArgs e)
         {
             DevExpress.UserSkins.BonusSkins.Register();
@@ -46,7 +44,6 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             BindProjectType();
             gridControl2.DataSource = GetList();
         }
-
         private void BindProjectType()
         {
             var dictionary = new Dictionary<int, string>()
@@ -61,7 +58,6 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             lookUpEditProjectType.Properties.DisplayMember = "Value";
             lookUpEditProjectType.Properties.ValueMember = "Key";
         }
-
         private List<OrderInfo> GetList()
         {
             return new List<OrderInfo>()
@@ -70,7 +66,6 @@ namespace Ordermanagement_01.New_Dashboard.Orders
                 new OrderInfo{orderNumber="548648",client="10000",subClient="10001",Date="01/26/2020",Task="Search QC", user="Kartik" },
             };
         }
-
         private class OrderInfo
         {
             public string orderNumber { get; set; }
@@ -80,7 +75,6 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             public string Task { get; set; }
             public string user { get; set; }
         }
-
         private void lookUpEditProjectType_EditValueChanged(object sender, EventArgs e)
         {
             int projectType = Convert.ToInt32(lookUpEditProjectType.EditValue);
@@ -113,7 +107,7 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             }
             else
             {
-                dictionaryLayoutGroups.Keys.ToList().ForEach(group => group.Visibility = LayoutVisibility.Never);              
+                dictionaryLayoutGroups.Keys.ToList().ForEach(group => group.Visibility = LayoutVisibility.Never);
             }
         }
     }

@@ -77,13 +77,13 @@
             this.tableLayoutPanel1.Controls.Add(this.gridControlOrders, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panelControl2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(980, 456);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(980, 459);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -189,7 +189,7 @@
             this.gridControlOrders.Location = new System.Drawing.Point(3, 45);
             this.gridControlOrders.MainView = this.gridViewOrders;
             this.gridControlOrders.Name = "gridControlOrders";
-            this.gridControlOrders.Size = new System.Drawing.Size(974, 366);
+            this.gridControlOrders.Size = new System.Drawing.Size(974, 369);
             this.gridControlOrders.TabIndex = 1;
             this.gridControlOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrders});
@@ -204,7 +204,7 @@
             this.panelControl2.Controls.Add(this.btnErrors);
             this.panelControl2.Controls.Add(this.btnImport);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 417);
+            this.panelControl2.Location = new System.Drawing.Point(3, 420);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(974, 36);
             this.panelControl2.TabIndex = 2;
@@ -235,6 +235,7 @@
             // 
             // xtraFileDialog
             // 
+            this.xtraFileDialog.FileName = null;
             this.xtraFileDialog.InitialDirectory = "C:";
             this.xtraFileDialog.RestoreDirectory = true;
             // 
