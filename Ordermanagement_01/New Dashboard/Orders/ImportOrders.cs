@@ -21,8 +21,6 @@ namespace Ordermanagement_01.New_Dashboard.Orders
     {
         private DataTable dtProcessSettings;
         private int projectTypeId;
-
-        public List<string> ColumnsToExport { get; set; }
         public ImportOrders()
         {
             InitializeComponent();

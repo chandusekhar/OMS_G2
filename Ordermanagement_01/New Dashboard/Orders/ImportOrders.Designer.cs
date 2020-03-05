@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControlImport = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -42,6 +43,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnErrors = new DevExpress.XtraEditors.SimpleButton();
             this.btnImport = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlImport)).BeginInit();
             this.groupControlImport.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -231,6 +233,11 @@
             this.btnImport.TabIndex = 23;
             this.btnImport.Text = "Import";
             // 
+            // xtraFileDialog
+            // 
+            this.xtraFileDialog.InitialDirectory = "C:";
+            this.xtraFileDialog.RestoreDirectory = true;
+            // 
             // ImportOrders
             // 
             this.Appearance.Options.UseFont = true;
@@ -276,5 +283,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton btnErrors;
         private DevExpress.XtraEditors.SimpleButton btnImport;
+        private DevExpress.XtraEditors.XtraOpenFileDialog xtraFileDialog;
     }
 }
